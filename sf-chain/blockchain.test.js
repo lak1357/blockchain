@@ -18,4 +18,12 @@ describe('Blockchain', () => {
         expect(bc.chain[bc.chain.length - 1].data).toEqual(data);
     })
 
+    it('validate blockchain', () => {
+        bc.addBlock('abc');
+        bc.addBlock('xyz');
+        bc.addBlock('barrr');
+
+        expect(bc.isValidChain(bc.chain)).toEqual(true);
+    })
+
 });
