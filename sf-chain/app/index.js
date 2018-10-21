@@ -25,6 +25,7 @@ app.get('/blocks/:id', (req, res) => {
 app.post('/mine', (req, res) => {
     const data = req.body.data;
     bc.addBlock(data);
+    p2pServer.syncChains();
     const result = { result: "Block added to the chain successfully" };
     res.json(result);
 });
