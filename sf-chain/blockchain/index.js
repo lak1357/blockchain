@@ -35,7 +35,6 @@ class Blockchain {
         }
         console.log('Replacing blockchain with new chain');
         this.chain = newChain;
-
     }
 }
 
