@@ -25,5 +25,16 @@ contract("NotaryContract", function(accounts){
         })
     });
 
+    it("Should be able to add entry" ,async () => {
+            let instance= await NotaryArtifact.deployed();
+            await instance.addEntry("file2" , 0xf4c2178860817a2c25d2cb3185aa25779b0ecaf17c30845926218e17a18a9f89, "this is a comment2");
+            let entry = await instance.entrySet(0xf4c2178860817a2c25d2cb3185aa25779b0ecaf17c30845926218e17a18a9f89);
+            
+            assert.equal(entry[0], "file2");
+            assert.equal(entry[1].toNumber() >= 1, true);
+            assert.equal(entry[2], "this is a comment2");
+            assert.equal(entry[3], accounts[0]);
+    });
+
 
 });
